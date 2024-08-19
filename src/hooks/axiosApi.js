@@ -17,5 +17,11 @@ export default function AxiosApi() {
       .finally(() => setLoading(false));
   }, []);
 
+  // function createPost() {
+  //   axios.post(`${URL_ENDPOINT}/agreement/true`, info).then((response) => {
+  //     setInfo({ ...info, response });
+  //   });
+  // }
+
   return [info, loading, error];
 }
