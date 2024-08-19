@@ -6,11 +6,16 @@ const URL_ENDPOINT =
 
 export default function AxiosApi() {
   const [info, setInfo] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get(URL_ENDPOINT).then((response) => setInfo(response.data));
-    console.log(info.cfscode);
+    axios
+      .get(URL_ENDPOINT)
+      .then((response) => setInfo(response.data))
+      .catch((error) => setError(error))
+      .finally(() => setLoading(false));
   }, []);
 
-  return;
+  return [info, loading, error];
 }
