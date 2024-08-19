@@ -4,9 +4,12 @@ const Textinput = ({ o }) => {
     <>
       <div className="textinput">
         {arrayCheckbox.map((o, index) => (
-          <div key={index}>
-            <label for={o.label}>{o.label}</label>
+          <div className="textinput__content" key={index}>
+            <label className="textinput__content__label" for={o.label}>
+              {o.label}
+            </label>
             <input
+              className="textinput__content__input"
               type="text"
               id={o.label}
               minlength={o.input.min}

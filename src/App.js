@@ -1,6 +1,5 @@
-import "./App.css";
+import "./App.scss";
 import AxiosApi from "./hooks/axiosApi";
-import "./App.css";
 import Content from "./components/Content";
 import Form from "./components/Form";
 import Header from "./components/Header";

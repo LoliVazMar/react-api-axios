@@ -2,7 +2,9 @@ const Button = ({ info }) => {
   return (
     <>
       <div className="button">
-        <button>{info.agreement.accept_button_text}</button>
+        <button className="button__button">
+          {info.agreement.accept_button_text}
+        </button>
       </div>
     </>
   );

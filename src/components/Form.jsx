@@ -7,16 +7,16 @@ const Form = ({ info }) => {
   return (
     <>
       <div className="form">
-        <p>{info.agreement.forms[0].title}</p>
+        <p className="form__title">{info.agreement.forms[0].title}</p>
         {arrayQuestions.map((i, index) => (
-          <div key={index}>
+          <div key={index} className="form__content">
             {i.type === "CHECK" ? (
-              <div>
-                <p>{i.label}</p>
+              <div className="form__content__checkbox">
+                <p className="checkbox__label">{i.label}</p>
                 <Checkbox o={i.options}></Checkbox>
               </div>
             ) : i.type === "TEXT" ? (
-              <div>
+              <div className="form__content__textinput">
                 <Textinput o={i.options}></Textinput>
               </div>
             ) : (

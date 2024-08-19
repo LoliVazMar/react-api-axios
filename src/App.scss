@@ -1,0 +1,193 @@
+@mixin desktop {
+  @media screen and (min-width: 600px) {
+    @content;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  background: #f6f6f6;
+  height: 100dvh;
+
+  .App {
+    height: 100dvh;
+    color: #444;
+    text-align: center;
+
+    text-wrap: balance;
+
+    .App__content {
+      display: flex;
+      flex-direction: column;
+
+      .header {
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        position: sticky;
+        top: 0;
+
+        @include desktop() {
+          background-color: #969696;
+          color: white;
+        }
+
+        .header__data {
+          font-size: clamp(1rem, 1vw + 0.2rem, 1.2rem);
+
+          padding: 1rem 2rem;
+
+          :nth-child(even) {
+            font-weight: 700;
+          }
+        }
+
+        .header__info {
+          font-size: clamp(0.5rem, 1vw + 0.2rem, 0.8rem);
+          padding: 1rem 2rem;
+
+          @include desktop() {
+            align-self: end;
+            text-align: right;
+          }
+        }
+      }
+
+      .content {
+        padding: 3rem 2rem;
+        text-align: left;
+        max-width: 300px;
+        align-self: center;
+
+        @include desktop() {
+          max-width: 550px;
+        }
+      }
+
+      .form {
+        padding: 1rem 2rem;
+        display: flex;
+        flex-direction: column;
+        row-gap: 1.5rem;
+
+        @include desktop() {
+          max-width: 800px;
+          max-height: 200px;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: repeat(3, 1fr);
+          align-self: center;
+        }
+
+        .form__title {
+          @include desktop() {
+            grid-column: span 2 / span 2;
+            height: fit-content;
+          }
+        }
+
+        .form__content {
+          .form__content__checkbox {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .checkbox {
+              display: flex;
+              flex-direction: column;
+              text-align: left;
+              max-width: 100px;
+              gap: 1rem;
+              padding: 0.5rem 0;
+
+              :hover {
+                cursor: pointer;
+              }
+
+              @include desktop() {
+                flex-direction: row;
+                max-width: none;
+
+                div {
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-content: center;
+                }
+              }
+            }
+          }
+
+          .form__content__textinput {
+            .textinput__content {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              row-gap: 1rem;
+
+              .textinput__content__input {
+                max-width: 150px;
+                text-align: center;
+                height: 24px;
+              }
+            }
+          }
+
+          @include desktop() {
+            min-width: 300px;
+          }
+        }
+
+        .button {
+          .button__button {
+            font-family: "Open Sans", sans-serif;
+            padding: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.75);
+            background: none;
+            background: #fff;
+            color: #dd3333;
+            border: 2px solid #dd3333;
+            padding: 16px 20px;
+            border-radius: 3px;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            display: inline-block;
+            text-transform: uppercase;
+
+            &:hover {
+              color: #fff;
+              cursor: pointer;
+            }
+
+            &::after {
+              content: "";
+              background: #dd3333;
+              position: absolute;
+              z-index: -1;
+              display: block;
+              left: 0;
+              right: 0;
+              top: 0;
+              bottom: 0;
+              transform: scale(0, 0);
+              transition: all 0.3s ease;
+            }
+            &:hover::after {
+              transition: all 0.3s ease-out;
+              transform: scale(1.1, 1.1);
+            }
+          }
+          @include desktop() {
+            grid-column: span 2 / span 2;
+          }
+        }
+      }
+    }
+  }
+}
